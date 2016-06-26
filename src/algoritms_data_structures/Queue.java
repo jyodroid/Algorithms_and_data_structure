@@ -3,13 +3,11 @@ package algoritms_data_structures;
 public class Queue {
 
 	private String[] peopleQueue;
-	private int queueSize; 
 	private int counter = -1;
 	
 	public Queue(int size) throws Exception{
 		if (size > 0){
 			peopleQueue = new String[size];
-			this.queueSize = size;
 		}else{
 			throw new Exception("Invalid queue size");
 		}

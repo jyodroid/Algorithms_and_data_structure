@@ -47,4 +47,18 @@ public class SortTest {
 		//Assert
 		assertArrayEquals(sortedArray, array);
 	}
+	
+	@Test
+	public void testSelectionSort() {
+		
+		//Arrange
+		int[] array = {7,2,1,6,8,5,3,4};
+		int[] sortedArray = {1,2,3,4,5,6,7,8};
+		
+		//Act
+		Sort.secelctionSort(array);
+		
+		//Assert
+		assertArrayEquals(sortedArray, array);
+	}
 }

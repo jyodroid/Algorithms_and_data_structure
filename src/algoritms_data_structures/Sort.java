@@ -2,6 +2,27 @@ package algoritms_data_structures;
 
 public class Sort {
 	/**
+	 * Simplest sorting algorithm
+	 *  O (n^2)
+	 * @param array
+	 */
+	public static void secelctionSort(int[] array){
+		
+		//move original array to the sorted array. compare each element to the others
+		for (int i = 0; i < array.length - 1; i++) {
+			int smallestIndex = i;
+			for (int j = i + 1; j < array.length; j++) {
+				if (array[j] < array[smallestIndex]) {
+					smallestIndex = j;
+				}
+			}
+			int vessel = array[i];
+			array[i] = array[smallestIndex];
+			array[smallestIndex] = vessel;
+		}
+	}
+	
+	/**
 	 * O(n log n) in random case
 	 * developed by Charles Antony Richard Hoare
 	 * Based on "divide and conquer"
@@ -52,7 +73,7 @@ public class Sort {
 	}
 	
 	/**
-	 * From arrays are created multiple sub arrays in memory
+	 * This Algorithm construct from array multiple sub arrays in memory
 	 * O(n log n) in worst case
 	 * @param array
 	 */
@@ -121,13 +142,9 @@ public class Sort {
 	} 
 	
 	public static void main(String[] args) {
-		int[] array = {3,4,5,7,2,1,6};
-//		int middle = array.length/2;
-		int[] leftArray = {3,4,5,7};
-		int[] rigthArray = {2,1,6};
-//		array = mergeArrays(leftArray, rigthArray);
-		//7 2 1 6 7 2 
-		mergeSort(array);
+		int[] array = {2,6,3,5,7,1,4};
+		
+		secelctionSort(array);
 		
 		for (int i = 0; i < array.length; i++) {
 			System.out.printf("%d ", array[i]);
