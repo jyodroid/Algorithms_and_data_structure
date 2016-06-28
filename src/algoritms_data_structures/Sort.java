@@ -6,9 +6,9 @@ public class Sort {
 	 *  O (n^2)
 	 * @param array
 	 */
-	public static void secelctionSort(int[] array){
+	public static void selectionSort(int[] array){
 		
-		//move original array to the sorted array. compare each element to the others
+		//compare each element to the others and let the lower at left
 		for (int i = 0; i < array.length - 1; i++) {
 			int smallestIndex = i;
 			for (int j = i + 1; j < array.length; j++) {
@@ -19,6 +19,46 @@ public class Sort {
 			int vessel = array[i];
 			array[i] = array[smallestIndex];
 			array[smallestIndex] = vessel;
+		}
+	}
+	
+	/**
+	 * Compare whit adjacent element
+	 * push greatest element to the right of array
+	 *  O (n^2)
+	 * @param array
+	 */
+	public static void bubbleSort(int[] array){
+		
+		for (int i = array.length - 1 ; i > 1 ; i--) {
+			//compare each element to the adjacent and swipe if is bigger
+			for (int j = 0; j < i; j++) {
+				if (array[j] > array[j + 1]) {
+					int vessel = array[j];
+					array[j] = array[j + 1];
+					array[j + 1] = vessel;
+				}
+			}	
+		}
+	}
+	
+	/**
+	 * a little more efficient than selection and bubble sort in practical scenarios
+	 * have two subsets of the array, the sorted part and unsorted part
+	 * each element is inserted in the correct position in the sorted part
+	 *  O (n) best case
+	 *  O (n^2) worst case
+	 * @param array
+	 */
+	public static void insertionSort(int[] array){
+		for (int i = 1 ; i < array.length; i++) {
+			int compValue = array[i];
+			int sortedIndx = i;
+			while (sortedIndx > 0 && array[sortedIndx - 1] > compValue) {
+				array[sortedIndx] = array[sortedIndx - 1];
+				sortedIndx = sortedIndx - 1;
+			}
+			array[sortedIndx] = compValue;
 		}
 	}
 	
@@ -144,7 +184,7 @@ public class Sort {
 	public static void main(String[] args) {
 		int[] array = {2,6,3,5,7,1,4};
 		
-		secelctionSort(array);
+		insertionSort(array);
 		
 		for (int i = 0; i < array.length; i++) {
 			System.out.printf("%d ", array[i]);
