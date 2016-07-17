@@ -325,7 +325,7 @@ public class CircularQueueTest {
 		
 		try {
 			//Arrange and act
-			CircularQueue circularQueue = new CircularQueue(8,9);
+			CircularQueue circularQueue = new CircularQueue(8,-1);
 			fail();
 		} catch (Exception e) {
 			assertEquals("Invalid startIndex", e.getMessage());
