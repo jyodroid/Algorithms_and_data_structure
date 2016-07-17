@@ -20,8 +20,8 @@ public class QueueTest {
 			//Assert
 			assertEquals("John", response);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			fail();
 		}
 	}
 	
@@ -40,8 +40,8 @@ public class QueueTest {
 			//Assert
 			assertEquals("John", response);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			fail();
 		}
 	}
 	
@@ -61,8 +61,8 @@ public class QueueTest {
 			//Assert
 			assertEquals("Vito", response);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			fail();
 		}
 	}
 	
@@ -85,8 +85,8 @@ public class QueueTest {
 			//Assert
 			assertEquals("Tulkas", response);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			fail();
 		}
 	}
 	
@@ -107,8 +107,8 @@ public class QueueTest {
 			//Assert
 			assertEquals("Vito", response);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			fail();
 		}
 	}
 	
@@ -132,8 +132,8 @@ public class QueueTest {
 			//Assert
 			assertEquals("Cata", response);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			fail();
 		}
 	}
 
@@ -153,8 +153,8 @@ public class QueueTest {
 			//Assert
 			assertEquals(2, queueSize);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			fail();
 		}
 	}
 	
@@ -176,8 +176,8 @@ public class QueueTest {
 			//Assert
 			assertEquals(0, queueSize);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			fail();
 		}
 	}
 	
@@ -187,6 +187,7 @@ public class QueueTest {
 		try {
 			//Arrange and act
 			Queue queue = new Queue(0);
+			fail();
 		} catch (Exception e) {
 			assertEquals("Invalid queue size", e.getMessage());
 		}
@@ -202,6 +203,8 @@ public class QueueTest {
 			//Act
 			queue.addPerson("John");
 			queue.addPerson("Vito");
+			
+			fail();
 			
 		} catch (Exception e) {
 			//Assert
