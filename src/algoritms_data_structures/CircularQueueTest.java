@@ -135,6 +135,54 @@ public class CircularQueueTest {
 			fail();
 		}
 	}
+	
+	@Test
+	public void testCircularQueueNextFromEmpty() {
+		
+		try {
+			//Arrange
+			CircularQueue circularQueue = new CircularQueue(4,2);
+			
+			//Act
+			circularQueue.addPerson("John");
+			circularQueue.addPerson("Vito");
+			circularQueue.addPerson("Tulkas");
+			circularQueue.addPerson("Cata");
+			circularQueue.removePerson();
+			circularQueue.removePerson();
+			circularQueue.removePerson();
+			circularQueue.removePerson();
+			String response = circularQueue.next();
+			
+			//Assert
+			assertEquals("Empty Queue", response);
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail();
+		}
+	}
+	
+	@Test
+	public void testCircularQueueNextFromFull() {
+		
+		try {
+			//Arrange
+			CircularQueue circularQueue = new CircularQueue(4,2);
+			
+			//Act
+			circularQueue.addPerson("John");
+			circularQueue.addPerson("Vito");
+			circularQueue.addPerson("Tulkas");
+			circularQueue.addPerson("Cata");
+			String response = circularQueue.next();
+			
+			//Assert
+			assertEquals("John", response);
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail();
+		}
+	}
 
 	@Test
 	public void testCircularQueueSize2() {

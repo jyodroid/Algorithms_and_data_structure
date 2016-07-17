@@ -42,7 +42,7 @@ public class CircularQueue {
 		
 		//Empty List state
 		if (counter == startElement && startMovement) {
-			throw new Exception("Empty circular list");
+			throw new Exception("Empty circular queu");
 		}
 		
 		//return first person (start element of circular)
@@ -73,7 +73,7 @@ public class CircularQueue {
 	}
 
 	public String next(){
-		if(counter == startElement){
+		if(counter == startElement && startMovement){
 			return "Empty Queue";
 		}else{
 			return peopleQueue[startElement];
