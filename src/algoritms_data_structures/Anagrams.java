@@ -25,7 +25,6 @@ public class Anagrams {
 				//switch a characters 
 				if(a.charAt(a_i) == b.charAt(b_i)){
 					a = switchCharacters(a, b_i, a_i);
-					System.out.println(a);
 					//start from switched position next element
 					continue;
 				}
