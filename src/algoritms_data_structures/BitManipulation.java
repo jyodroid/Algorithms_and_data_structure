@@ -37,6 +37,7 @@ public class BitManipulation {
 		System.out.println(-13 ^ 1);
 		System.out.println(-13 ^ -14);
 		System.out.println(0 >> 1);
+		System.out.println(~1001);
 
 	}
 

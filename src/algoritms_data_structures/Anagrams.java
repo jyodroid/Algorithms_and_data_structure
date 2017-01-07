@@ -4,6 +4,9 @@
  */
 package algoritms_data_structures;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author jyodroid
  *
@@ -54,4 +57,20 @@ public class Anagrams {
 		
 		return newString.toString();
 	}
+	
+    public List<String> buildAnagrams(String string){
+        List<String> anagrams = new ArrayList<>();
+        for(int i = 0; i < string.length() - 1; i++){
+            for(int j = i + 1; j < string.length(); j ++){
+                if(string.charAt(i) == string.charAt(j)){
+                    continue;
+                }
+                String newString = switchCharacters(string, i, j);
+                if(!string.equals(newString) && !anagrams.contains(newString)){
+                    anagrams.add(newString);
+                }
+            }
+        }
+        return anagrams;
+    }
 }

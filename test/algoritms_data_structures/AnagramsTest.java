@@ -2,6 +2,10 @@ package algoritms_data_structures;
 
 import static org.junit.Assert.*;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 
 public class AnagramsTest {
@@ -59,6 +63,23 @@ public class AnagramsTest {
 		//Act
 		//Assert
 		assertTrue(anagrams.isAnagram(a, b));
+	}
+	
+	@Test
+	public void buildAnagrams() {
+		//Arrange
+		Anagrams anagrams = new Anagrams();
+		List<String> anagramsExpected = new ArrayList<String>();
+		anagramsExpected.add("abba");
+		anagramsExpected.add("aabb");
+		anagramsExpected.add("bbaa");
+		anagramsExpected.add("baab");
+		
+		//Act
+		List<String> anagramsList = anagrams.buildAnagrams("baba"); 
+		
+		//Assert
+		assertArrayEquals(anagramsExpected.toArray(new String[anagramsExpected.size()]), anagramsList.toArray(new String[anagramsList.size()]));
 	}
 
 }

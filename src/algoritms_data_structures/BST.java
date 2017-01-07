@@ -15,6 +15,6 @@ public class BST {
 		//All elements of tree on left should be lesser data value than node's
 		return root.getData() > minValue && root.getData() < maxValue &&
 				isBST(root.getLeft(), minValue, root.getData()) && 
-				isBST(root.getRight(), root.getData(), maxValue);		
+				isBST(root.getRight(), root.getData(), maxValue);	
 	}
 }
