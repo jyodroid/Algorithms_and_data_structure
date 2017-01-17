@@ -1,9 +1,12 @@
 package algoritms_data_structures;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Fibonacci {
 	
 	//O(2^n) complexity 
-	public static int fibonacci(int n){
+	public long fibonacci(int n){
 		if(n == 0 || n == 1){
 			return 1;
 		}
@@ -11,7 +14,7 @@ public class Fibonacci {
 	}
 	
 	//O(n) complexity
-	public static int memoriedFibonacci(int n, int[] memory){
+	public long memoriedFibonacci(int n, long[] memory){
 		
 		if(n == 0 || n == 1){
 			return 1;
@@ -20,15 +23,27 @@ public class Fibonacci {
 		}
 		return memory[n-1];
 	}
-	
-	public static void main(String...strings){
-		int n = 30;
-		long startTime = System.currentTimeMillis();
-		System.out.println(memoriedFibonacci(n, new int[n]));
-		System.out.println(System.currentTimeMillis() - startTime);
-		startTime = System.currentTimeMillis();
-		System.out.println(fibonacci(n));
-		System.out.println(System.currentTimeMillis() - startTime);
+	/**
+	 * DP
+	 * 1. Memory
+	 * 2. What are the subproblems that helps solve the problem
+	 * 3. re - use the answer of subproblems. 
+	 * 4. time = # subproblem * time/subproblem 
+	 * @param n
+	 * @return
+	 */
+	//O(n) complexity, essentially recursive + memorization
+	public long fibonacciDP(int n){
+		Map<Integer, Long> fiboValues = new HashMap<>();
+		for (int k = 0; k <= n; k++) {
+			long fiboValue;
+			if(k < 2) {
+				fiboValue = 1;
+			} else {
+				fiboValue = fiboValues.get(k-1) + fiboValues.get(k-2);
+			}
+			fiboValues.put(k, fiboValue);
+		}
+		return fiboValues.get(n);
 	}
-
 }

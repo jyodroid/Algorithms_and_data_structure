@@ -81,5 +81,4 @@ public class AnagramsTest {
 		//Assert
 		assertArrayEquals(anagramsExpected.toArray(new String[anagramsExpected.size()]), anagramsList.toArray(new String[anagramsList.size()]));
 	}
-
 }

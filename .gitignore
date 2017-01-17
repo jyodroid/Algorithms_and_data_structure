@@ -5,3 +5,6 @@ bin/
 .settings
 *.class
 .metadata/
+.idea/
+out/
+Algorithms_and_data_structure.iml

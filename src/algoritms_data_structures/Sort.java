@@ -1,5 +1,8 @@
 package algoritms_data_structures;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class Sort {
 	/**
 	 * Simplest sorting algorithm
@@ -16,9 +19,7 @@ public class Sort {
 					smallestIndex = j;
 				}
 			}
-			int vessel = array[i];
-			array[i] = array[smallestIndex];
-			array[smallestIndex] = vessel;
+			swap(array, i, smallestIndex);
 		}
 	}
 	
@@ -34,13 +35,28 @@ public class Sort {
 			//compare each element to the adjacent and swipe if is bigger
 			for (int j = 0; j < i; j++) {
 				if (array[j] > array[j + 1]) {
-					int vessel = array[j];
-					array[j] = array[j + 1];
-					array[j + 1] = vessel;
+					swap(array, j, j + 1);
 				}
 			}	
 		}
 	}
+	
+    public static void bubbleSort2(int[] array){
+        // Track number of elements swapped during a single array traversal
+        boolean sorted = false;
+        int lastSorted = array.length - 1;
+        do {
+            sorted = true;
+            for (int j = 0; j < lastSorted ; j++) {
+                // Swap adjacent elements if they are in decreasing order
+                if (array[j] > array[j + 1]) {
+                    swap(array, j, j + 1);
+                    sorted = false;
+                }
+            }
+            lastSorted --;
+        }while(!sorted);
+    }
 	
 	/**
 	 * a little more efficient than selection and bubble sort in practical scenarios
@@ -87,6 +103,51 @@ public class Sort {
 		}	
 	}
 	
+	/**
+	 * O(n log n) in random case
+	 * developed by Charles Antony Richard Hoare
+	 * Based on "divide and conquer"
+	 * Sorting occurs in the same array
+	 * @param array
+	 * @param start of sort segment in array
+	 * @param end of sort segment in array
+	 */
+	public static void quickSort2(int[] array, int startIndex, int endIndex){
+		
+		if(startIndex > endIndex ){
+			return;
+		}
+		
+		int pivot = array[(endIndex + startIndex)/2];
+		int partitionIndex = partition2(array, startIndex, endIndex, pivot);
+		//divide array in left and right array if possible
+		//left part
+		quickSort(array, startIndex, partitionIndex - 1);
+		
+		//right part
+		quickSort(array, partitionIndex, endIndex);
+	}
+
+	private static int partition2(int [] array, int startIndex, int endIndex, int pivot){
+		//Choose a pivot
+		while(startIndex <= endIndex){
+			while(array[startIndex] < pivot){
+				startIndex++;
+			}
+			
+			while(array[endIndex] > pivot){
+				endIndex--;
+			}
+			
+			if(startIndex <= endIndex){
+				swap(array, startIndex, endIndex);
+				startIndex ++;
+				endIndex --;
+			}
+		}
+		return startIndex;
+	}
+	
 	private static int partition(int [] array, int start, int end){
 		//Choose a pivot
 		int pivot = array[end];
@@ -128,15 +189,10 @@ public class Sort {
 				middle =  Integer.valueOf(arraySize/2);
 			}
 			
-			int[] leftArray = new int[middle];
-			for (int i = 0; i < middle; i++) {
-				leftArray[i] = array[i];
-			}
+			int[] leftArray = Arrays.copyOf(array, middle);
 			
 			int[] rigthArray = new int[arraySize - middle];
-			for (int i = middle; i < arraySize; i++) {
-				rigthArray[i - middle] = array[i];
-			}
+            System.arraycopy(array, middle, rigthArray, 0, rigthArray.length); 
 			
 			//Sort each subArray
 			mergeSort(rigthArray);
@@ -179,6 +235,54 @@ public class Sort {
 			rightPosition ++;
 			arrayPosition++;
 		}
+	} 
+	
+	/**
+	 * This Algorithm construct from array multiple sub arrays in memory
+	 * O(n log n) in worst case
+	 * @param array
+	 */
+	public static void mergeSort2(int[] array){
+		mergeSortAux(array, new int[array.length], 0, array.length -1);
+			
+	}
+	
+	private static void mergeSortAux(int [] array, int [] auxiliarArray, int leftStart, int rightEnd){
+		if(leftStart >= rightEnd){
+			return;
+		}
+		int middle = (leftStart + rightEnd)/2;
+		mergeSortAux(array, auxiliarArray, leftStart, middle);
+		mergeSortAux(array, auxiliarArray, middle + 1, rightEnd);
+		mergeHalves(array, auxiliarArray, leftStart, rightEnd);
+	}
+	
+	private static void mergeHalves (int [] array, int [] auxiliarArray, int leftStart, int rightEnd){
+		int leftEnd = (leftStart + rightEnd)/2;
+		int rightStart = leftEnd + 1;
+		int size = rightEnd - leftStart + 1;
+		
+		int left = leftStart;
+		int right = rightStart;
+		int index = leftStart;
+		
+		while(left <= leftEnd && right <= rightEnd){
+			
+			if (array[left] < array[right]) {
+				auxiliarArray[index] = array[left];
+				left++;
+				
+			}else {
+				auxiliarArray[index] = array[right];
+				right++;
+			}
+			
+			index++;
+		}
+		
+		System.arraycopy(array, left, auxiliarArray, index , leftEnd - left + 1);
+		System.arraycopy(array, right, auxiliarArray, index , rightEnd - right + 1);
+		System.arraycopy(auxiliarArray, leftStart, array, leftStart , size);
 	} 
 	
 	public static void main(String[] args) {

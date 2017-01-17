@@ -14,7 +14,21 @@ public class SortTest {
 		int[] sortedArray = {1,2,3,4,5,6,7,8};
 		
 		//Act
-		Sort.quickSort(array, 0, 7);
+		Sort.quickSort(array, 0, array.length - 1);
+		
+		//Assert
+		assertArrayEquals(sortedArray, array);
+	}
+	
+	@Test
+	public void testQuickSort2() {
+		
+		//Arrange
+		int[] array = {7,2,1,6,8,5,3,4};
+		int[] sortedArray = {1,2,3,4,5,6,7,8};
+		
+		//Act
+		Sort.quickSort2(array, 0, array.length - 1);
 		
 		//Assert
 		assertArrayEquals(sortedArray, array);
@@ -49,6 +63,20 @@ public class SortTest {
 	}
 	
 	@Test
+	public void testMergeSort2() {
+		
+		//Arrange
+		int[] array = {7,2,1,6,5,3,4};
+		int[] sortedArray = {1,2,3,4,5,6,7};
+		
+		//Act
+		Sort.mergeSort2(array);
+		
+		//Assert
+		assertArrayEquals(sortedArray, array);
+	}
+	
+	@Test
 	public void testSelectionSort() {
 		
 		//Arrange
@@ -71,6 +99,20 @@ public class SortTest {
 		
 		//Act
 		Sort.bubbleSort(array);
+		
+		//Assert
+		assertArrayEquals(sortedArray, array);
+	}
+	
+	@Test
+	public void testBubbleSort2() {
+		
+		//Arrange
+		int[] array = {7,2,1,6,8,5,3,4};
+		int[] sortedArray = {1,2,3,4,5,6,7,8};
+		
+		//Act
+		Sort.bubbleSort2(array);
 		
 		//Assert
 		assertArrayEquals(sortedArray, array);
