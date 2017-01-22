@@ -8,17 +8,17 @@ public class BitManipulation {
 		
 		int accumXOR = array[0];
 		for (int i = 1; i < array.length; i++) {
-			accumXOR = accumXOR ^ array[i]; 
+			accumXOR ^= array[i];
 		}
 		
 		int accumAND = array[0];
 		for (int i = 1; i < array.length; i++) {
-			accumAND = accumAND & array[i]; 
+			accumAND &= array[i];
 		}
 		
 		int accumOR = array[0];
 		for (int i = 1; i < array.length; i++) {
-			accumOR = accumOR | array[i]; 
+			accumOR |= array[i];
 		}
 				
 		System.out.println(accumXOR);

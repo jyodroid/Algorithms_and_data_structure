@@ -40,6 +40,42 @@ public class FactorialTest {
 		//Assert
 		assertEquals(479001600, response);
 	}
+
+	@Test
+	public void memoriedFactorialTestWith12() {
+
+		//Arrange
+		int response = 0;
+
+		//Act
+		try{
+			response = Factorial.memoriedFactorial(12, new int[13]);
+		}catch(Exception e){
+			e.printStackTrace();
+			fail();
+		}
+
+		//Assert
+		assertEquals(479001600, response);
+	}
+
+	@Test
+	public void iterativeFactorialTestWith12() {
+
+		//Arrange
+		int response = 0;
+
+		//Act
+		try{
+			response = Factorial.iterativeFactorial(12, new int[13]);
+		}catch(Exception e){
+			e.printStackTrace();
+			fail();
+		}
+
+		//Assert
+		assertEquals(479001600, response);
+	}
 	
 	@Test
 	public void factorialTestWithNegative1() {

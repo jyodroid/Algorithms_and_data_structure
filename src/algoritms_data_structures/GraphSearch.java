@@ -57,13 +57,13 @@ public class GraphSearch {
     //Helper recursive DFS method
     private boolean  hasPathDFS(GraphNode source, GraphNode destination, Graph graph, HashSet<Integer> visited){
 
+        if (source == destination){
+            return true;
+        }
         if (visited.contains(source.getId())){
             return false;
         }
         visited.add(source.getId());
-        if (source == destination){
-            return true;
-        }
         for (GraphNode child: source.getAdjacent()) {
             if (hasPathDFS(child, destination, graph, visited)){
                 return true;
