@@ -9,45 +9,45 @@ public class BinarySum {
 
         StringBuilder result = new StringBuilder();
 
-        int big;
+        int biggerLength = b.length();
         if (a.length() > b.length()) {
-            big = a.length();
-        } else {
-            big = b.length();
+            biggerLength = a.length();
         }
 
-        char carrier = '0';
-        for (int i = 0; i < big; i++) {
-            char up = '0';
+        boolean hasCarrier = false;
+        for (int i = 0; i < biggerLength; i++) {
+            char augend = '0';
             if (a.length() - 1 - i >= 0) {
-                up = a.charAt(a.length() - 1 - i);
+                augend = a.charAt(a.length() - 1 - i);
             }
-            char down = '0';
+            char addded = '0';
             if (b.length() - 1 - i >= 0) {
-                down = b.charAt(b.length() - 1 - i);
+                addded = b.charAt(b.length() - 1 - i);
             }
 
-            if (up == '1' && down == '1') {
-                if (carrier == '0') {
+            if (augend == '1' && addded == '1') {
+                if (!hasCarrier) {
                     result.append('0');
-                    carrier = '1';
+                    hasCarrier = true;
                 } else {
                     result.append('1');
                 }
-            } else if ((up == '1' ^ down == '1')) {
-                if (carrier == '0') {
+            } else if (augend == '1' ^ addded == '1') {
+                if (!hasCarrier) {
                     result.append('1');
                 } else {
                     result.append('0');
                 }
             } else {
-                result.append(carrier);
-                carrier = '0';
+                if (hasCarrier) {
+                    result.append(1);
+                    hasCarrier = false;
+                }
             }
         }
 
-        if (carrier == '1') {
-            result.append(carrier);
+        if (hasCarrier) {
+            result.append('1');
         }
 
         return result.reverse().toString();

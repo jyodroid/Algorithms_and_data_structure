@@ -109,8 +109,8 @@ public class Sort {
 	 * Based on "divide and conquer"
 	 * Sorting occurs in the same array
 	 * @param array
-	 * @param start of sort segment in array
-	 * @param end of sort segment in array
+	 * @param startIndex of sort segment in array
+	 * @param endIndex of sort segment in array
 	 */
 	public static void quickSort2(int[] array, int startIndex, int endIndex){
 		
