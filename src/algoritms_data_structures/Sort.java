@@ -191,15 +191,15 @@ public class Sort {
 			
 			int[] leftArray = Arrays.copyOf(array, middle);
 			
-			int[] rigthArray = new int[arraySize - middle];
-            System.arraycopy(array, middle, rigthArray, 0, rigthArray.length); 
+			int[] rightArray = new int[arraySize - middle];
+            System.arraycopy(array, middle, rightArray, 0, rightArray.length);
 			
 			//Sort each subArray
-			mergeSort(rigthArray);
+			mergeSort(rightArray);
 			mergeSort(leftArray);
 			
 			//merge each subArray
-			mergeArrays(leftArray, rigthArray, array);
+			mergeArrays(leftArray, rightArray, array);
 		}
 	}
 	
