@@ -16,7 +16,7 @@ public class TrieNodeTest {
         //Arrange
         String string1 = "hackerman";
         String string2 = "hack";
-        String string3 = "hachis";
+        String string3 = "Hachis";
         TrieNode node = new TrieNode();
 
         //Act
